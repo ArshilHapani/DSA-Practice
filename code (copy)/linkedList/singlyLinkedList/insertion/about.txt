@@ -1,7 +1,0 @@
-there are four case for insertion in linked list
-    case-1 Insert at the beginning  (time complexity  BigO(1) )
-    case-2 Insert at the end  (time complexity  BigO(n) )
-    case-3 Insert in between the node  (time complexity  BigO(n) )
-    case-1 Insert after the node with given pointer  (time complexity  BigO(1) )
-
-
