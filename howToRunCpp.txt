@@ -1,0 +1,4 @@
+how to execute cpp or c programs
+step-1 ->  g++ -o ./exe/Factorial ./Factorial.cpp
+step-2 -> ./exe/Factorial
+step-3 ->Enjoy
