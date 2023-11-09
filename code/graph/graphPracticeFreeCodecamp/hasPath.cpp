@@ -15,9 +15,7 @@ bool hasPath(unordered_map<string, vector<string>> graph, string source, string 
     for (string neighbor : graph[source])
     {
         if (hasPath(graph, neighbor, destination))
-        {
             return true;
-        }
     }
     return false;
 }
