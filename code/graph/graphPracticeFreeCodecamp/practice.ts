@@ -28,6 +28,30 @@ function buildGraph(edges: string[][]): Record<string, string[]> {
   return graph;
 }
 
+class ComponentTests {
+  maximumComponent(graph: Record<string, string[]>): number {
+    let max: number = 0;
+    for (let ls in graph) {
+      let count = this.countNodes(graph, ls, new Set());
+      if (count > max) max = count;
+    }
+    return max;
+  }
+  countNodes(
+    graph: Record<string, string[]>,
+    current: string,
+    visited: Set<string>
+  ): number {
+    if (visited.has(current)) return 0;
+    visited.add(current);
+    let size = 1;
+    for (let neighbor of graph[current]) {
+      size += this.countNodes(graph, neighbor, visited);
+    }
+    return size;
+  }
+}
+
 // const g: Record<string, string[]> = {
 //   f: ["i", "g"],
 //   g: ["h"],
@@ -54,4 +78,6 @@ const edges = [
 
 const g = buildGraph(edges);
 
-dfs(g, "m");
+// dfs(g, "m");
+let component = new ComponentTests();
+console.log(component.maximumComponent(g));
