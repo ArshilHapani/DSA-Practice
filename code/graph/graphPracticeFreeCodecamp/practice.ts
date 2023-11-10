@@ -78,6 +78,6 @@ const edges = [
 
 const g = buildGraph(edges);
 
-// dfs(g, "m")
+// dfs(g, "m");
 let component = new ComponentTests();
 console.log(component.maximumComponent(g));
