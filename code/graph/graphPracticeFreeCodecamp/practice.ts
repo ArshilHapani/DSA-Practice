@@ -27,28 +27,52 @@ function buildGraph(edges: string[][]): Record<string, string[]> {
   }
   return graph;
 }
-
-class ComponentTests {
-  maximumComponent(graph: Record<string, string[]>): number {
+interface ComponentInterface {
+  graph: Record<string, string[]>;
+  maximumComponent: () => number;
+  countNodes: (current: string, visited: Set<string>) => number;
+  shortestPath: (source: string, destination: string) => number;
+}
+class ComponentTests implements ComponentInterface {
+  graph: Record<string, string[]>;
+  constructor(graph: Record<string, string[]>) {
+    this.graph = graph;
+  }
+  maximumComponent() {
     let max: number = 0;
-    for (let ls in graph) {
-      let count = this.countNodes(graph, ls, new Set());
+    for (let ls in this.graph) {
+      let count = this.countNodes(ls, new Set());
       if (count > max) max = count;
     }
     return max;
   }
-  countNodes(
-    graph: Record<string, string[]>,
-    current: string,
-    visited: Set<string>
-  ): number {
+  countNodes(current: string, visited: Set<string>) {
     if (visited.has(current)) return 0;
     visited.add(current);
     let size = 1;
-    for (let neighbor of graph[current]) {
-      size += this.countNodes(graph, neighbor, visited);
+    for (let neighbor of this.graph[current]) {
+      size += this.countNodes(neighbor, visited);
     }
     return size;
+  }
+
+  shortestPath(source: string, destination: string) {
+    let visited = new Set<string>([source]);
+    let queue = [[source, 0]];
+
+    while (queue.length > 0) {
+      const node = queue.shift() ?? [];
+
+      if (node[0] === destination) return parseInt(node[1].toString());
+      console.log(node);
+      for (let neighbor of this.graph[node[0]]) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push([neighbor, parseInt(node[1].toString()) + 1]);
+        }
+      }
+    }
+    return -1;
   }
 }
 
@@ -61,23 +85,32 @@ class ComponentTests {
 //   k: [],
 // };
 
+// const edges = [
+//   ["i", "j"],
+//   ["i", "k"],
+//   ["j", "i"],
+//   ["j", "k"],
+//   ["k", "i"],
+//   ["k", "j"],
+//   ["k", "l"],
+//   ["l", "k"],
+//   ["k", "m"],
+//   ["m", "k"],
+//   ["o", "n"],
+//   ["n", "o"],
+// ];
+
 const edges = [
-  ["i", "j"],
-  ["i", "k"],
-  ["j", "i"],
-  ["j", "k"],
-  ["k", "i"],
-  ["k", "j"],
-  ["k", "l"],
-  ["l", "k"],
-  ["k", "m"],
-  ["m", "k"],
-  ["o", "n"],
-  ["n", "o"],
+  ["x", "y"],
+  ["y", "z"],
+  ["z", "v"],
+  ["v", "w"],
+  ["w", "x"],
 ];
 
 const g = buildGraph(edges);
 
 // dfs(g, "m");
-let component = new ComponentTests();
-console.log(component.maximumComponent(g));
+
+let component = new ComponentTests(g);
+console.log(component.shortestPath("w", "z"));
