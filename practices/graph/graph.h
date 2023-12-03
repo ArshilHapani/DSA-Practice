@@ -16,20 +16,22 @@ using namespace std;
  */
 void dfs(unordered_map<string, vector<string>> graph, string source)
 {
-    stack<string> stack({source}); // pushing source node to stack and set
+    stack<string> st({source});
     set<string> visited({source});
 
-    while (!stack.empty())
+    while (!st.empty())
     {
-        string current = stack.top();
-        stack.pop();
+        string current = st.top();
+        st.pop();
+
         cout << current << " ";
         for (string neighbor : graph[current])
         {
             if (visited.find(neighbor) == visited.end())
             {
+                // neighbor does not exist on visited set
+                st.push(neighbor);
                 visited.insert(neighbor);
-                stack.push(neighbor);
             }
         }
     }
@@ -42,20 +44,19 @@ template <typename T>
 void bfs(unordered_map<T, vector<T>> &graph, T source)
 {
     queue<T> q({source});
-    set<T> visited({source});
+    set<T> v({source});
 
     while (!q.empty())
     {
         T current = q.front();
         q.pop();
-
         cout << current << " ";
         for (T neighbor : graph[current])
         {
-            if (visited.find(neighbor) == visited.end())
+            if (v.find(neighbor) == v.end())
             {
-                visited.insert(neighbor);
                 q.push(neighbor);
+                v.insert(neighbor);
             }
         }
     }
@@ -64,7 +65,6 @@ void bfs(unordered_map<T, vector<T>> &graph, T source)
 unordered_map<string, vector<string>> buildGraph(vector<vector<string>> &edges)
 {
     unordered_map<string, vector<string>> graph;
-
     for (vector<string> edge : edges)
     {
         string a = edge.at(0);
@@ -81,12 +81,16 @@ unordered_map<string, vector<string>> buildGraph(vector<vector<string>> &edges)
         graph[a].push_back(b);
         graph[b].push_back(a);
     }
-
     return graph;
 }
+// bool explore(unordered_map<string,vector<string>> graph,string source,set<string> &visited){
 
-int componentCount(unordered_map<string, vector<string>> graph)
-{
-}
+// }
+
+// int componentCount(unordered_map<string, vector<string>> graph)
+// {
+
+//     return 0;
+// }
 
 #endif

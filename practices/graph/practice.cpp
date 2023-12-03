@@ -19,26 +19,42 @@ int main()
 
     unordered_map<string, vector<string>> undirectedGraph;
 
-    undirectedGraph["i"].push_back("j");
     undirectedGraph["i"].push_back("k");
+    undirectedGraph["i"].push_back("j");
     undirectedGraph["j"].push_back("k");
-    undirectedGraph["k"].push_back("l");
     undirectedGraph["k"].push_back("m");
+    undirectedGraph["k"].push_back("l");
     undirectedGraph["l"];
     undirectedGraph["m"];
 
-    // dfs(graph, "a");
-    // bfs<string>(graph, "a");
+    // dfs(undirectedGraph, "i");
+    // bfs<string>(undirectedGraph, "i");
 
     vector<vector<string>> edges = {
-        {"i", "j"},
         {"i", "k"},
+        {"i", "j"},
         {"j", "k"},
-        {"k", "l"},
-        {"k", "m"}};
+        {"k", "m"},
+        {"k", "l"}};
+
+    edges = {
+        {"o", "n"},
+        {"n", "o"},
+        {"n", "n"},
+        {"o", "o"}};
 
     graph = buildGraph(edges);
-    dfs(graph, "i");
+    // dfs(graph, "o");
+
+    int a = 10;
+    int *b = &a;
+    cout << a << endl;
+    cout << *b << endl;
+    cout << &a << endl;
+    cout << *&a << endl;
+    int c = 20;
+    b = &c;
+    cout << *b << endl;
 
     return 0;
 }
