@@ -17,44 +17,36 @@ int main()
     graph["e"] = {};
     graph["f"] = {};
 
-    unordered_map<string, vector<string>> undirectedGraph;
+    // unordered_map<string, vector<string>> undirectedGraph;
 
-    undirectedGraph["i"].push_back("k");
-    undirectedGraph["i"].push_back("j");
-    undirectedGraph["j"].push_back("k");
-    undirectedGraph["k"].push_back("m");
-    undirectedGraph["k"].push_back("l");
-    undirectedGraph["l"];
-    undirectedGraph["m"];
+    // undirectedGraph["i"].push_back("k");
+    // undirectedGraph["i"].push_back("j");
+    // undirectedGraph["j"].push_back("k");
+    // undirectedGraph["k"].push_back("m");
+    // undirectedGraph["k"].push_back("l");
+    // undirectedGraph["l"];
+    // undirectedGraph["m"];
 
-    // dfs(undirectedGraph, "i");
-    // bfs<string>(undirectedGraph, "i");
+    // // dfs(undirectedGraph, "i");
+    // // bfs<string>(undirectedGraph, "i");
 
-    vector<vector<string>> edges = {
-        {"i", "k"},
-        {"i", "j"},
-        {"j", "k"},
-        {"k", "m"},
-        {"k", "l"}};
+    // vector<vector<string>> edges = {
+    //     {"i", "k"},
+    //     {"i", "j"},
+    //     {"j", "k"},
+    //     {"k", "m"},
+    //     {"k", "l"}};
 
-    edges = {
-        {"o", "n"},
-        {"n", "o"},
-        {"n", "n"},
-        {"o", "o"}};
+    // edges = {
+    //     {"o", "n"},
+    //     {"n", "o"},
+    //     {"n", "n"},
+    //     {"o", "o"}};
 
-    graph = buildGraph(edges);
+    // graph = buildGraph(edges);
     // dfs(graph, "o");
 
-    int a = 10;
-    int *b = &a;
-    cout << a << endl;
-    cout << *b << endl;
-    cout << &a << endl;
-    cout << *&a << endl;
-    int c = 20;
-    b = &c;
-    cout << *b << endl;
+    cout << componentCount(graph) << endl;
 
     return 0;
 }

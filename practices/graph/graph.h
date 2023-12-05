@@ -83,14 +83,31 @@ unordered_map<string, vector<string>> buildGraph(vector<vector<string>> &edges)
     }
     return graph;
 }
-// bool explore(unordered_map<string,vector<string>> graph,string source,set<string> &visited){
+bool explore(unordered_map<string, vector<string>> &graph, string source, set<string> &visited)
+{
+    if (visited.count(source) > 0)
+        return false;
 
-// }
+    visited.insert(source);
 
-// int componentCount(unordered_map<string, vector<string>> graph)
-// {
+    for (string neighbor : graph[source])
+    {
+        explore(graph, neighbor, visited);
+    }
+    return true;
+}
 
-//     return 0;
-// }
+int componentCount(unordered_map<string, vector<string>> graph)
+{
+    int count = 0;
+    set<string> visited;
+
+    for (pair<string, vector<string>> item : graph)
+    {
+        if (explore(graph, item.first, visited))
+            count++;
+    }
+    return count;
+}
 
 #endif
