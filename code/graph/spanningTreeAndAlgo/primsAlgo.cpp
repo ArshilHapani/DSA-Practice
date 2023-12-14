@@ -55,7 +55,7 @@ public:
 
         set<string> mstNodes = set<string>({source});
         int totalCost = 0;
-
+        // run the loop until all the nodes are not included in set
         while (mstNodes.size() < this->graph.size())
         {
             int minCost = INT_MAX;
