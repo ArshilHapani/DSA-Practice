@@ -55,6 +55,7 @@ public:
 
         set<string> mstNodes = set<string>({source});
         int totalCost = 0;
+
         // run the loop until all the nodes are not included in set
         while (mstNodes.size() < this->graph.size())
         {
@@ -62,8 +63,10 @@ public:
             string nextNode;
             string prevNode;
 
+            // iterating through each node in the mst node sets
             for (string currentNode : mstNodes)
             {
+                // iterating through each neighbors of `currentNode`
                 for (Edge &neighbor : this->graph[currentNode])
                 {
                     if (mstNodes.find(neighbor.dest) == mstNodes.end() && neighbor.cost < minCost)
