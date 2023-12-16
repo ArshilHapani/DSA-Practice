@@ -22,6 +22,7 @@ class DisjointSet
     unordered_map<string, string> parent;
 
 public:
+    // initializing the empty set
     void makeSet(string v)
     {
         parent[v] = v;
