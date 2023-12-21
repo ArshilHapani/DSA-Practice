@@ -18,7 +18,7 @@ void twoSum(vector<int> arr, int target)
         }
         else
         {
-            auto it = tbl.find(requiredVal);
+            unordered_map<int, int>::iterator it = tbl.find(requiredVal);
             int ansInd = it->first;
             ans = {ansInd, i};
         }
@@ -27,4 +27,6 @@ void twoSum(vector<int> arr, int target)
 
 int main()
 {
+    // no need to drive this code..
+    // logic is enough to test the code
 }
