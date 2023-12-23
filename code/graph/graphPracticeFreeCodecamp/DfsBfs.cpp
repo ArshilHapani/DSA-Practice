@@ -27,6 +27,7 @@ void bfs(unordered_map<string, vector<string>> graph, string source)
 {
     queue<string> q;
     q.push(source);
+
     while (!q.empty())
     {
         string current = q.front();
