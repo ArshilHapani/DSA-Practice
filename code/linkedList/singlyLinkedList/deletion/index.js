@@ -81,6 +81,20 @@ class List {
 
     prev.next = node.next;
   }
+  findLength() {
+    let current = this.head;
+    let length = 0;
+    while (current != null) {
+      length++;
+      current = current.next;
+    }
+    return length;
+  }
+  deleteNodeFromLastIndex(index) {
+    let length = this.findLength();
+    let indexToDelete = length - index + 1;
+    this.deleteAtSpecificIndex(indexToDelete);
+  }
 }
 
 let l = new List();
@@ -92,10 +106,11 @@ l.append(50);
 l.append(60);
 l.append(70);
 
-l.deleteFirstNode();
-l.deleteLastNode();
-l.deleteNodeByValue(50);
-l.deleteAtSpecificIndex(3);
-l.deleteBySpecificNode(node);
+// l.deleteFirstNode();
+// l.deleteLastNode();
+// l.deleteNodeByValue(50);
+// l.deleteAtSpecificIndex(3);
+l.deleteNodeFromLastIndex(3);
+// l.deleteBySpecificNode(node);
 
 l.display();
