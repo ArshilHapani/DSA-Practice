@@ -5,7 +5,6 @@ using namespace std;
 int main()
 {
     unordered_map<string, vector<string>> graph;
-
     // directed graph
     graph["a"].push_back("b");
     graph["a"].push_back("c");
