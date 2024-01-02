@@ -102,6 +102,9 @@ int componentCount(unordered_map<string, vector<string>> graph)
     int count = 0;
     set<string> visited;
 
+    // explain this line
+    // for (auto &[a, b] : graph) // or like this
+
     for (pair<string, vector<string>> item : graph)
     {
         if (explore(graph, item.first, visited))
