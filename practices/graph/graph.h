@@ -1,4 +1,6 @@
-
+/**
+ * Graph header file
+ */
 #ifndef GRAPH_H
 
 #define GRAPH_H
@@ -114,3 +116,4 @@ int componentCount(unordered_map<string, vector<string>> graph)
 }
 
 #endif
+// end of header file
